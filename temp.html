@@ -1,0 +1,97 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        select {
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <form>
+        <label for="temp">Temperature:</label>
+        <input type="number" id="temp" required>
+        <br><br>
+        <label for="unit">Unit:</label>
+        <select id="unit">
+            <option value="F">Fahrenheit</option>
+            <option value="C">Celsius</option>
+        </select>
+        <br><br>
+        <button onclick="convertTemp()">Convert</button>
+        <p id="result"></p>
+    </form>
+
+    <script>
+        function convertTemp() {
+            let temp = document.getElementById("temp").value;
+            let unit = document.getElementById("unit").value;
+            let result = document.getElementById("result");
+
+            if (unit === "F") {
+                let celsius = (temp - 32) * 5/9;
+                result.textContent = `${temp}°F is equal to ${celsius.toFixed(2)}°C`;
+            } else if (unit === "C") {
+                let fahrenheit = temp * 9/5 + 32;
+                result.textContent = `${temp}°C is equal to ${fahrenheit.toFixed(2)}°F`;
+            }
+        }
+    </script>
+</body>
+</html>
